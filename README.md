@@ -7,6 +7,7 @@ A portable set of agent skills in the `SKILL.md` format. Install it into Claude 
 | Skill | Source | What it does |
 |---|---|---|
 | `blast-radius` | pstack | Finds what a change can break elsewhere and checks it by running code |
+| `bro` | pstack | Makes the agent restate its last message in plain words, without jargon |
 | `diagnosing-bugs` | Matt Pocock | Diagnosis loop for hard bugs and performance regressions |
 | `domain-modeling` | Matt Pocock | Builds the project's glossary and decision records while you design |
 | `grill-me`, `grilling` | Matt Pocock | Interviews you about a plan until the gaps show |
@@ -17,7 +18,6 @@ A portable set of agent skills in the `SKILL.md` format. Install it into Claude 
 | `pstack-teach` | pstack | Explains a subsystem or change in plain English by running `how` and `why` |
 | `principle-prove-it-works` | pstack | Checks the real artifact before a task is called done |
 | `unslop` | pstack | Rewrites text to remove AI writing patterns |
-| `wait-what` | Matt Pocock | Makes the agent re-pitch a message that did not land |
 
 Claude Code users also get `CLAUDE.md` (global writing rules that import `unslop`) and `plugins.json` (the `ponytail` plugin).
 
