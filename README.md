@@ -18,7 +18,7 @@ My Claude Code skills, global instructions and plugin list, kept in one repo so 
 ## Install on Windows
 
 ```powershell
-git clone https://github.com/abdullah-dev0/claude-kit
+git clone https://github.com/Abdullah-dev0/claude-kit
 cd claude-kit
 .\install.ps1
 ```
@@ -28,7 +28,7 @@ The script copies skills into `~/.claude/skills`, copies `CLAUDE.md` if none exi
 ## Install on macOS or Linux
 
 ```sh
-git clone https://github.com/abdullah-dev0/claude-kit
+git clone https://github.com/Abdullah-dev0/claude-kit
 cp -r claude-kit/skills/* ~/.claude/skills/
 ```
 
@@ -41,4 +41,5 @@ Edit a skill on one machine, copy it into this repo, push, then pull and rerun `
 ## Not included
 
 Credentials, session history, and the skills Claude Desktop syncs from Anthropic (`~/.claude/skills/synced`).
+
 
