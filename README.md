@@ -1,17 +1,23 @@
-﻿# skillpack
+# skillpack
 
 A portable set of agent skills in the `SKILL.md` format. Install it into Claude Code, Codex or Cursor with one command, and keep the same skills on every machine.
 
 ## Skills
 
-| Skill | What it does |
-|---|---|
-| `blast-radius` | Finds what a change can break elsewhere and checks it by running code |
-| `diagnosing-bugs` | Diagnosis loop for hard bugs and performance regressions |
-| `grill-me`, `grilling` | Interviews you about a plan until the gaps show |
-| `principle-prove-it-works` | Checks the real artifact before a task is called done |
-| `unslop` | Rewrites text to remove AI writing patterns |
-| `wait-what` | Makes the agent re-pitch a message that did not land |
+| Skill | Source | What it does |
+|---|---|---|
+| `blast-radius` | pstack | Finds what a change can break elsewhere and checks it by running code |
+| `diagnosing-bugs` | Matt Pocock | Diagnosis loop for hard bugs and performance regressions |
+| `domain-modeling` | Matt Pocock | Builds the project's glossary and decision records while you design |
+| `grill-me`, `grilling` | Matt Pocock | Interviews you about a plan until the gaps show |
+| `grill-with-docs` | Matt Pocock | Runs `grilling` and `domain-modeling` together and writes the docs as you go |
+| `how` | pstack | Explains how a part of the codebase works |
+| `why` | pstack | Explains why code is built the way it is |
+| `matt-teach` | Matt Pocock | Teaches you a topic over several sessions, using the current folder as a learning workspace |
+| `pstack-teach` | pstack | Explains a subsystem or change in plain English by running `how` and `why` |
+| `principle-prove-it-works` | pstack | Checks the real artifact before a task is called done |
+| `unslop` | pstack | Rewrites text to remove AI writing patterns |
+| `wait-what` | Matt Pocock | Makes the agent re-pitch a message that did not land |
 
 Claude Code users also get `CLAUDE.md` (global writing rules that import `unslop`) and `plugins.json` (the `ponytail` plugin).
 
@@ -63,6 +69,15 @@ Then rerun the install step.
 ## Add or change a skill (maintainer)
 
 Edit the folder in `skills/`, commit, and push to `main`. Pull on the other machine and reinstall.
+
+## Credits
+
+Every skill here is copied from its creator's repo. Both repos use the MIT license.
+
+- Matt Pocock: [mattpocock/skills](https://github.com/mattpocock/skills)
+- pstack by Lauren Tan: [cursor/plugins](https://github.com/cursor/plugins/tree/main/pstack)
+
+The files match the originals byte for byte, with one exception. Both creators ship a skill named `teach`, so the copies here are renamed `matt-teach` and `pstack-teach`. Only the `name:` line in each `SKILL.md` changed.
 
 ## Notes
 
