@@ -1,45 +1,71 @@
-﻿# claude-kit
+﻿# skillpack
 
-My Claude Code skills, global instructions and plugin list, kept in one repo so a second machine matches the first.
+A portable set of agent skills in the `SKILL.md` format. Install it into Claude Code, Codex or Cursor with one command, and keep the same skills on every machine.
 
-## Contents
+## Skills
 
-| Path | What it is |
+| Skill | What it does |
 |---|---|
-| `skills/blast-radius` | Finds what a change can break elsewhere and checks it by running code |
-| `skills/diagnosing-bugs` | Diagnosis loop for hard bugs and performance regressions |
-| `skills/grill-me`, `skills/grilling` | Interviews you about a plan until the gaps show |
-| `skills/principle-prove-it-works` | Checks the real artifact before a task is called done |
-| `skills/unslop` | Rewrites text to remove AI writing patterns |
-| `skills/wait-what` | Makes Claude re-pitch a message that did not land |
-| `CLAUDE.md` | Global instructions. Imports the `unslop` skill |
-| `plugins.json` | Marketplace and enabled plugins (`ponytail`) |
+| `blast-radius` | Finds what a change can break elsewhere and checks it by running code |
+| `diagnosing-bugs` | Diagnosis loop for hard bugs and performance regressions |
+| `grill-me`, `grilling` | Interviews you about a plan until the gaps show |
+| `principle-prove-it-works` | Checks the real artifact before a task is called done |
+| `unslop` | Rewrites text to remove AI writing patterns |
+| `wait-what` | Makes the agent re-pitch a message that did not land |
 
-## Install on Windows
+Claude Code users also get `CLAUDE.md` (global writing rules that import `unslop`) and `plugins.json` (the `ponytail` plugin).
 
-```powershell
-git clone https://github.com/Abdullah-dev0/claude-kit
-cd claude-kit
-.\install.ps1
-```
+## Install (anyone)
 
-The script copies skills into `~/.claude/skills`, copies `CLAUDE.md` if none exists, and merges `plugins.json` into `~/.claude/settings.json`. Restart Claude Code afterward.
+### Option 1: npx
 
-## Install on macOS or Linux
+Needs Node.js. Pick the agents when the prompt asks.
 
 ```sh
-git clone https://github.com/Abdullah-dev0/claude-kit
-cp -r claude-kit/skills/* ~/.claude/skills/
+npx skills add Abdullah-dev0/skillpack
 ```
 
-Then copy the two keys from `plugins.json` into `~/.claude/settings.json`.
+### Option 2: clone and run the script
 
-## Updating
+Windows:
 
-Edit a skill on one machine, copy it into this repo, push, then pull and rerun `install.ps1` on the other machine.
+```powershell
+git clone https://github.com/Abdullah-dev0/skillpack
+cd skillpack
+.\install.ps1 -Target claude
+```
 
-## Not included
+macOS or Linux:
 
-Credentials, session history, and the skills Claude Desktop syncs from Anthropic (`~/.claude/skills/synced`).
+```sh
+git clone https://github.com/Abdullah-dev0/skillpack
+cd skillpack
+./install.sh claude
+```
 
+Replace `claude` with `codex` or `cursor`. The script copies the skills into `~/.claude/skills`, `~/.codex/skills` or `~/.cursor/skills`. Restart the agent afterward.
 
+For Claude Code on Windows, the script also copies `CLAUDE.md` if you have none and merges `plugins.json` into `~/.claude/settings.json`. On macOS and Linux, copy those two keys by hand.
+
+### Option 3: copy by hand
+
+Copy any folder from `skills/` into your agent's skills folder.
+
+## Update
+
+```sh
+cd skillpack
+git pull
+```
+
+Then rerun the install step.
+
+## Add or change a skill (maintainer)
+
+Edit the folder in `skills/`, commit, and push to `main`. Pull on the other machine and reinstall.
+
+## Notes
+
+- Codex and Cursor read `SKILL.md` folders, but check their current docs if a skill does not load. Their skills folder paths may change between versions.
+- `disable-model-invocation: true` in some skills is a Claude Code setting. Other agents may ignore it.
+- Not included: credentials, session history, and the skills Claude Desktop syncs from Anthropic.
